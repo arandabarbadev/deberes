@@ -53,34 +53,23 @@
       </section>
     </main>
 
-    <!-- Sincronización entre móvil y ordenador -->
+    <!-- Tu cuenta: base de datos en la nube -->
     <section id="ajustes" class="tarjeta oculto">
-      <h2>Sincronizar</h2>
-      <p class="sugerencia">Guarda tus datos cifrados dentro de tu repo de GitHub, así los tienes igual en el móvil y en el ordenador.</p>
-      <form id="form-ajustes" class="form-ajustes">
-        <label for="token">Token de GitHub</label>
-        <input type="password" id="token" placeholder="github_pat_…" autocomplete="off">
-        <label for="contrasena">Contraseña de cifrado</label>
-        <input type="password" id="contrasena" placeholder="La misma en todos tus dispositivos" autocomplete="new-password">
-        <button type="submit" class="boton">Guardar y sincronizar</button>
-      </form>
+      <h2>Tu cuenta</h2>
+      <p class="sugerencia">Entra con tu cuenta de Google y tus deberes se guardan en tu base de datos de Firebase: iguales en todos tus dispositivos, sin tokens ni contraseñas.</p>
+      <div id="cuenta-info" class="cuenta-info"></div>
+      <button id="boton-cuenta" class="boton" type="button">Entrar con Google</button>
+      <button id="boton-salir" class="enlace oculto" type="button">Cerrar sesión</button>
       <p id="estado-sync" class="sugerencia"></p>
-      <details class="ayuda-token">
-        <summary>¿Cómo consigo el token?</summary>
-        <ol>
-          <li>En GitHub: tu foto → <strong>Settings</strong> → <strong>Developer settings</strong> → <strong>Personal access tokens → Fine-grained tokens</strong></li>
-          <li><strong>Generate new token</strong> → en Repository access elige <strong>Only select repositories → deberes</strong></li>
-          <li>En Permissions → Repository permissions → <strong>Contents: Read and write</strong></li>
-          <li>Genera y copia el código (empieza por <code>github_pat_</code>)</li>
-        </ol>
-        <p>El token solo puede tocar este repo, y tus datos van cifrados con tu contraseña: nadie más puede leerlos. No compartas ninguno de los dos.</p>
-      </details>
     </section>
 
-    <footer>Tus datos se guardan en este navegador y, con la sincronización activada, cifrados en GitHub.</footer>
+    <footer>Tus datos se guardan en este navegador y, con tu cuenta, en tu base de datos de Firebase.</footer>
   </div>
 
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" crossorigin="anonymous"></script>
+  <script src="firebase.js"></script>
   <script src="app.js"></script>
-  <script src="sincronizar.js"></script>
 </body>
 </html>

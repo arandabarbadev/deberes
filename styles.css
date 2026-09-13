@@ -395,54 +395,28 @@ header {
   background: #f0f0f0;
 }
 
-/* Panel de sincronización */
-.form-ajustes {
-  display: grid;
-  gap: 6px;
-  margin-top: 12px;
+/* Panel de tu cuenta */
+.cuenta-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 0.9rem;
 }
 
-.form-ajustes label {
-  margin-top: 10px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--suave);
+.cuenta-info img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
 }
 
-#ajustes input[type="password"] {
-  padding: 10px 12px;
-  background: var(--fondo);
-  border: 1px solid var(--borde);
-  border-radius: 10px;
-}
+.cuenta-info .sin-sesion { color: var(--suave); }
 
-#ajustes input[type="password"]:focus {
-  outline: 2px solid var(--negro);
-  outline-offset: 1px;
-  border-color: transparent;
-}
+#boton-cuenta { margin-top: 4px; }
 
 #estado-sync {
   margin-top: 12px;
   font-weight: 600;
-}
-
-.ayuda-token {
-  margin-top: 12px;
-  color: var(--suave);
-  font-size: 0.85rem;
-}
-
-.ayuda-token summary {
-  cursor: pointer;
-  color: var(--texto);
-}
-
-.ayuda-token ol {
-  padding-left: 20px;
-  margin: 8px 0;
 }
 
 /* Móvil estrecho: el formulario de edición se apila */

@@ -2,8 +2,8 @@
 // Dos apartados: pendientes y completados.
 // Al añadir una tarea: asignatura, fecha de entrega y en qué consiste.
 // Cuando pasa el día de entrega, la tarea se elimina sola.
-// Los datos se guardan en el navegador (localStorage) y, si activas
-// la sincronización en ⚙️, también cifrados en GitHub (ver sincronizar.js).
+// Los datos se guardan en el navegador (localStorage) y, si entras con
+// tu cuenta en ⚙️, también en tu base de datos de Firebase (ver firebase.js).
 
 const CLAVE = 'misDeberesV1';
 const MENSAJE_MOTIVADOR = 'El esfuerzo de hoy es el éxito del mañana.';
@@ -25,9 +25,9 @@ function cargar() {
 const datos = cargar();
 
 function guardar() {
-  datos.modificado = Date.now(); // cuándo se cambió por última vez (para sincronizar)
+  datos.modificado = Date.now(); // cuándo se cambió por última vez (para la nube)
   localStorage.setItem(CLAVE, JSON.stringify(datos));
-  if (typeof programarSubida === 'function') programarSubida();
+  if (typeof programarNube === 'function') programarNube();
 }
 
 const idNuevo = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
