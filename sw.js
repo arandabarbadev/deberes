@@ -1,7 +1,7 @@
 // Service worker: guarda los archivos de la web para que
 // "Mis deberes" funcione como una app y también sin conexión.
 
-const CACHE = 'deberes-v2';
+const CACHE = 'deberes-v3';
 const ARCHIVOS = [
   './',
   './index.html',

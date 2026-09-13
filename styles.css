@@ -10,6 +10,8 @@
   --negro: #111111;   /* los detalles */
   --verde: #1e8e3d;   /* completar */
   --verde-suave: #e6f4ea;
+  --rojo: #d93025;    /* eliminar */
+  --rojo-suave: #fce8e6;
 }
 
 * { box-sizing: border-box; }
@@ -234,20 +236,44 @@ header h1 {
   background: var(--fondo);
 }
 
-/* Completar: verde */
-.icono.ok { color: var(--verde); }
-
-.icono.ok:hover {
+/* Completar: cuadradito verde */
+.icono.ok {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   color: var(--verde);
   background: var(--verde-suave);
+  border: 1px solid #bfe0cb;
+  border-radius: 9px;
 }
 
-/* Eliminar: negro */
-.icono.borrar { color: var(--negro); }
+.icono.ok:hover {
+  color: #146c2f;
+  background: #d4eddd;
+  border-color: #9ed4b2;
+}
+
+/* Eliminar: cuadradito rojo */
+.icono.borrar {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: var(--rojo);
+  background: var(--rojo-suave);
+  border: 1px solid #f2c4c0;
+  border-radius: 9px;
+}
 
 .icono.borrar:hover {
-  color: var(--negro);
-  background: #f0f0f0;
+  color: #b3261e;
+  background: #f9dcd9;
+  border-color: #eda5a0;
 }
 
 /* Formulario para añadir: asignatura+fecha arriba, tarea+botón debajo */
