@@ -1,0 +1,450 @@
+/* Mis deberes — estilo carreras Porsche: blanco, negro y rojo */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&display=swap');
+
+:root {
+  --fondo: #f4f4f2;
+  --tarjeta: #ffffff;
+  --texto: #101012;
+  --suave: #86868b;
+  --borde: #dadadf;
+  --acento: #d5001c; /* rojo Porsche */
+  --fuente-titulo: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+button, input { font: inherit; }
+
+/* Banda de bandera a cuadros arriba, como meta de carrera */
+body::before {
+  content: "";
+  display: block;
+  height: 10px;
+  background: repeating-conic-gradient(#101012 0% 25%, #ffffff 0% 50%) 0 0 / 14px 14px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+/* Cabecera */
+header h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Rayas de carreras delante del título (rojo-negro-rojo) */
+header h1::before {
+  content: "";
+  width: 30px;
+  height: 18px;
+  flex: none;
+  background: linear-gradient(
+    115deg,
+    transparent 16%, var(--acento) 16% 34%,
+    transparent 34% 48%, var(--texto) 48% 58%,
+    transparent 58% 72%, var(--acento) 72% 90%,
+    transparent 90%
+  );
+}
+
+.subtitulo {
+  margin: 4px 0 0;
+  color: var(--suave);
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+/* Pestañas de apartados, como botones del pit lane */
+.pestanas {
+  display: flex;
+  gap: 6px;
+  margin: 18px 0 14px;
+}
+
+.pestanas button {
+  flex: 1;
+  padding: 8px 0 9px;
+  font-family: var(--fuente-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--suave);
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pestanas button.activo {
+  background: var(--texto);
+  border-color: var(--texto);
+  color: #fff;
+  box-shadow: inset 0 -3px 0 var(--acento);
+}
+
+/* Tarjetas */
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 6px 16px 16px;
+}
+
+.tarjeta h2 {
+  margin: 12px 0 2px;
+  font-family: var(--fuente-titulo);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sugerencia {
+  margin: 0;
+  color: var(--suave);
+  font-size: 0.8rem;
+}
+
+/* Filas de deberes */
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.deber {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.deber .cuerpo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* La asignatura, como el dorsal del coche */
+.chip {
+  font-family: var(--fuente-titulo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--acento);
+}
+
+.deber .texto {
+  overflow-wrap: anywhere;
+}
+
+/* La fecha de entrega, como un cronometraje de carrera */
+.entrega {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  flex: none;
+}
+
+.entrega .fecha {
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--texto);
+  text-transform: uppercase;
+}
+
+.entrega .cuenta {
+  font-size: 0.75rem;
+  color: var(--suave);
+}
+
+/* Entrega hoy: bandera roja */
+.entrega.hoy .fecha,
+.entrega.hoy .cuenta {
+  color: var(--acento);
+}
+
+/* Tareas completadas: en grises, fuera de carrera */
+.deber.hecha .chip { color: var(--suave); }
+
+.deber.hecha .texto {
+  text-decoration: line-through;
+  color: var(--suave);
+}
+
+.deber.hecha .fecha { color: var(--suave); }
+
+.vacio {
+  padding: 18px 0;
+  color: var(--suave);
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+/* Mensaje motivador cuando no hay tareas */
+.motivador {
+  padding: 26px 10px 24px;
+  text-align: center;
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.motivador::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--acento);
+  margin: 0 auto 12px;
+}
+
+/* Botones de editar y borrar: discretos, aparecen al tocar la fila */
+.acciones {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+}
+
+.deber:hover .acciones,
+.deber:focus-within .acciones { opacity: 1; }
+
+@media (hover: none) {
+  .acciones { opacity: 1; } /* en móvil siempre visibles */
+}
+
+.icono {
+  border: none;
+  background: none;
+  padding: 6px;
+  font-size: 1rem;
+  color: var(--suave);
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.icono:hover {
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+.icono.peligro:hover { color: var(--acento); }
+
+/* Formulario para añadir: asignatura+fecha arriba, tarea+botón debajo */
+.form-nueva {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#asignatura { grid-column: 1; }
+
+#fecha { grid-column: 2; }
+
+#texto { grid-column: 1; }
+
+.form-nueva .boton { grid-column: 2; }
+
+input[type="date"],
+input[type="text"] {
+  padding: 10px 12px;
+  color: var(--texto);
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  min-width: 0;
+}
+
+input:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.boton {
+  padding: 10px 16px;
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--texto);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton:hover { background: var(--acento); }
+
+.boton:active { transform: scale(0.98); }
+
+/* Formulario al editar una tarea (ocupa su fila) */
+.form-editar {
+  display: grid;
+  grid-template-columns: 1fr 130px auto;
+  gap: 8px;
+  flex: 1;
+  align-items: center;
+}
+
+.form-editar .acciones { opacity: 1; }
+
+.form-editar .campo-largo { grid-column: 1 / 3; }
+
+/* Enlace "quitar todas" */
+.enlace {
+  margin-top: 10px;
+  border: none;
+  background: none;
+  color: var(--suave);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.enlace:hover { color: var(--acento); }
+
+footer {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--suave);
+  font-size: 0.78rem;
+}
+
+.oculto { display: none; }
+
+/* Mensaje de estado de la sincronización, bajo el título */
+.estado-global {
+  margin: 10px 0 0;
+  min-height: 1.1em;
+  font-size: 0.8rem;
+  color: var(--suave);
+}
+
+.estado-global.mal {
+  color: var(--acento);
+  font-weight: 600;
+}
+
+/* Cabecera con el botón de ajustes */
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.boton-ajustes {
+  border: none;
+  background: none;
+  padding: 6px 8px;
+  font-size: 1.2rem;
+  color: var(--suave);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.boton-ajustes:hover {
+  color: var(--texto);
+  background: var(--tarjeta);
+}
+
+/* Panel de sincronización */
+.form-ajustes {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.form-ajustes label {
+  margin-top: 10px;
+  font-family: var(--fuente-titulo);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--suave);
+}
+
+#ajustes input[type="password"] {
+  padding: 10px 12px;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+#ajustes input[type="password"]:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+#estado-sync {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.ayuda-token {
+  margin-top: 12px;
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+
+.ayuda-token summary {
+  cursor: pointer;
+  color: var(--texto);
+}
+
+.ayuda-token ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+/* Móvil estrecho: el formulario de edición se apila */
+@media (max-width: 420px) {
+  .form-editar { grid-template-columns: 1fr auto; }
+
+  .form-editar .campo-largo { grid-column: 1 / 2; }
+}
+
+/* Ordenador: más espacio y texto algo más grande */
+@media (min-width: 700px) {
+  .app {
+    max-width: 680px;
+    padding-top: 48px;
+  }
+
+  header h1 { font-size: 2.2rem; }
+
+  .tarjeta { padding: 8px 24px 24px; }
+
+  .deber { padding: 14px 0; }
+}
