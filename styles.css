@@ -1,15 +1,15 @@
-/* Mis deberes — estilo carreras Porsche: blanco, negro y rojo */
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&display=swap');
+/* Mis deberes — estilo minimalista: fondo blanco, detalles en negro,
+   verde para completar y negro para eliminar */
 
 :root {
-  --fondo: #f4f4f2;
+  --fondo: #ffffff;
   --tarjeta: #ffffff;
-  --texto: #101012;
-  --suave: #86868b;
-  --borde: #dadadf;
-  --acento: #d5001c; /* rojo Porsche */
-  --fuente-titulo: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --texto: #111111;
+  --suave: #6e6e73;
+  --borde: #e6e6e6;
+  --negro: #111111;   /* los detalles */
+  --verde: #1e8e3d;   /* completar */
+  --verde-suave: #e6f4ea;
 }
 
 * { box-sizing: border-box; }
@@ -23,13 +23,12 @@ body {
 
 button, input { font: inherit; }
 
-/* Banda de bandera a cuadros arriba, como meta de carrera */
+/* Línea negra arriba: el único adorno */
 body::before {
   content: "";
   display: block;
-  height: 10px;
-  background: repeating-conic-gradient(#101012 0% 25%, #ffffff 0% 50%) 0 0 / 14px 14px;
-  border-bottom: 1px solid var(--borde);
+  height: 5px;
+  background: var(--negro);
 }
 
 .app {
@@ -41,29 +40,9 @@ body::before {
 /* Cabecera */
 header h1 {
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--fuente-titulo);
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Rayas de carreras delante del título (rojo-negro-rojo) */
-header h1::before {
-  content: "";
-  width: 30px;
-  height: 18px;
-  flex: none;
-  background: linear-gradient(
-    115deg,
-    transparent 16%, var(--acento) 16% 34%,
-    transparent 34% 48%, var(--texto) 48% 58%,
-    transparent 58% 72%, var(--acento) 72% 90%,
-    transparent 90%
-  );
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .subtitulo {
@@ -73,50 +52,47 @@ header h1::before {
   text-transform: capitalize;
 }
 
-/* Pestañas de apartados, como botones del pit lane */
+/* Pestañas de apartados */
 .pestanas {
   display: flex;
-  gap: 6px;
-  margin: 18px 0 14px;
+  gap: 8px;
+  margin: 20px 0 16px;
 }
 
 .pestanas button {
   flex: 1;
-  padding: 8px 0 9px;
-  font-family: var(--fuente-titulo);
-  font-size: 1.05rem;
+  padding: 9px 0 10px;
+  font-size: 0.9rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--suave);
   background: var(--tarjeta);
   border: 1px solid var(--borde);
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
+.pestanas button:hover { border-color: var(--negro); }
+
 .pestanas button.activo {
-  background: var(--texto);
-  border-color: var(--texto);
+  background: var(--negro);
+  border-color: var(--negro);
   color: #fff;
-  box-shadow: inset 0 -3px 0 var(--acento);
 }
 
 /* Tarjetas */
 .tarjeta {
   background: var(--tarjeta);
   border: 1px solid var(--borde);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 6px 16px 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .tarjeta h2 {
   margin: 12px 0 2px;
-  font-family: var(--fuente-titulo);
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
 }
 
 .sugerencia {
@@ -136,7 +112,7 @@ header h1::before {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 11px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--borde);
 }
 
@@ -148,21 +124,20 @@ header h1::before {
   gap: 2px;
 }
 
-/* La asignatura, como el dorsal del coche */
+/* La asignatura: pequeño y en negro, como una etiqueta */
 .chip {
-  font-family: var(--fuente-titulo);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--acento);
+  letter-spacing: 0.12em;
+  color: var(--negro);
 }
 
 .deber .texto {
   overflow-wrap: anywhere;
 }
 
-/* La fecha de entrega, como un cronometraje de carrera */
+/* La fecha de entrega, a la derecha */
 .entrega {
   display: flex;
   flex-direction: column;
@@ -172,11 +147,11 @@ header h1::before {
 }
 
 .entrega .fecha {
-  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: 0.85rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: var(--texto);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .entrega .cuenta {
@@ -184,13 +159,14 @@ header h1::before {
   color: var(--suave);
 }
 
-/* Entrega hoy: bandera roja */
+/* Entrega hoy: negro y contundente */
 .entrega.hoy .fecha,
 .entrega.hoy .cuenta {
-  color: var(--acento);
+  color: var(--negro);
+  font-weight: 800;
 }
 
-/* Tareas completadas: en grises, fuera de carrera */
+/* Tareas completadas: en gris; el "hecha", en verde */
 .deber.hecha .chip { color: var(--suave); }
 
 .deber.hecha .texto {
@@ -199,6 +175,8 @@ header h1::before {
 }
 
 .deber.hecha .fecha { color: var(--suave); }
+
+.deber.hecha .cuenta { color: var(--verde); }
 
 .vacio {
   padding: 18px 0;
@@ -211,23 +189,23 @@ header h1::before {
 .motivador {
   padding: 26px 10px 24px;
   text-align: center;
-  font-family: var(--fuente-titulo);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-style: italic;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
+  color: var(--texto);
 }
 
 .motivador::before {
   content: "";
   display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--acento);
-  margin: 0 auto 12px;
+  width: 28px;
+  height: 2px;
+  background: var(--negro);
+  margin: 0 auto 14px;
 }
 
-/* Botones de editar y borrar: discretos, aparecen al tocar la fila */
+/* Botones de acción */
 .acciones {
   display: flex;
   gap: 2px;
@@ -248,7 +226,7 @@ header h1::before {
   font-size: 1rem;
   color: var(--suave);
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .icono:hover {
@@ -256,7 +234,21 @@ header h1::before {
   background: var(--fondo);
 }
 
-.icono.peligro:hover { color: var(--acento); }
+/* Completar: verde */
+.icono.ok { color: var(--verde); }
+
+.icono.ok:hover {
+  color: var(--verde);
+  background: var(--verde-suave);
+}
+
+/* Eliminar: negro */
+.icono.borrar { color: var(--negro); }
+
+.icono.borrar:hover {
+  color: var(--negro);
+  background: #f0f0f0;
+}
 
 /* Formulario para añadir: asignatura+fecha arriba, tarea+botón debajo */
 .form-nueva {
@@ -280,30 +272,29 @@ input[type="text"] {
   color: var(--texto);
   background: var(--fondo);
   border: 1px solid var(--borde);
-  border-radius: 8px;
+  border-radius: 10px;
   min-width: 0;
 }
 
+input::placeholder { color: #a1a1a6; }
+
 input:focus {
-  outline: 2px solid var(--acento);
+  outline: 2px solid var(--negro);
   outline-offset: 1px;
   border-color: transparent;
 }
 
 .boton {
   padding: 10px 16px;
-  font-family: var(--fuente-titulo);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: var(--texto);
+  background: var(--negro);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.boton:hover { background: var(--acento); }
+.boton:hover { background: #2a2a2a; }
 
 .boton:active { transform: scale(0.98); }
 
@@ -331,7 +322,7 @@ input:focus {
   cursor: pointer;
 }
 
-.enlace:hover { color: var(--acento); }
+.enlace:hover { color: var(--negro); }
 
 footer {
   margin-top: 18px;
@@ -351,7 +342,7 @@ footer {
 }
 
 .estado-global.mal {
-  color: var(--acento);
+  color: var(--negro);
   font-weight: 600;
 }
 
@@ -375,7 +366,7 @@ header {
 
 .boton-ajustes:hover {
   color: var(--texto);
-  background: var(--tarjeta);
+  background: #f0f0f0;
 }
 
 /* Panel de sincronización */
@@ -387,8 +378,8 @@ header {
 
 .form-ajustes label {
   margin-top: 10px;
-  font-family: var(--fuente-titulo);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--suave);
@@ -398,11 +389,11 @@ header {
   padding: 10px 12px;
   background: var(--fondo);
   border: 1px solid var(--borde);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 #ajustes input[type="password"]:focus {
-  outline: 2px solid var(--acento);
+  outline: 2px solid var(--negro);
   outline-offset: 1px;
   border-color: transparent;
 }
@@ -442,9 +433,9 @@ header {
     padding-top: 48px;
   }
 
-  header h1 { font-size: 2.2rem; }
+  header h1 { font-size: 2rem; }
 
   .tarjeta { padding: 8px 24px 24px; }
 
-  .deber { padding: 14px 0; }
+  .deber { padding: 15px 0; }
 }

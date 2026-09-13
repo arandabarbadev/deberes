@@ -185,12 +185,12 @@ function filaDeber(t, seccion) {
 
   const acciones = elemento('div', 'acciones');
   if (seccion === 'pendientes') {
-    acciones.append(botonIcono('✓', 'Marcar como completada', () => completar(t.id)));
+    acciones.append(botonIcono('✓', 'Marcar como completada', () => completar(t.id), 'ok'));
     acciones.append(botonIcono('✎', 'Editar', () => editar(t.id)));
   } else {
     acciones.append(botonIcono('↩', 'Devolver a pendientes', () => deshacer(t.id)));
   }
-  acciones.append(botonIcono('✕', 'Borrar', () => borrar(t.id), 'peligro'));
+  acciones.append(botonIcono('✕', 'Borrar', () => borrar(t.id), 'borrar'));
 
   li.append(cuerpo, entrega, acciones);
   return li;
@@ -246,8 +246,8 @@ function editar(id) {
   texto.className = 'campo-largo';
 
   const botones = elemento('div', 'acciones');
-  botones.append(botonIcono('✓', 'Guardar cambios', () => form.requestSubmit()));
-  botones.append(botonIcono('✕', 'Cancelar', () => dibujar(), 'peligro'));
+  botones.append(botonIcono('✓', 'Guardar cambios', () => form.requestSubmit(), 'ok'));
+  botones.append(botonIcono('✕', 'Cancelar', () => dibujar()));
 
   form.append(asignatura, fecha, botones, texto);
   form.addEventListener('submit', evento => {
